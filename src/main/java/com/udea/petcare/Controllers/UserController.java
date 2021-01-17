@@ -14,22 +14,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(path="/")
+    @GetMapping(path="/allUsers")
     public List<User> getAllUsers() {
         return userService.findAllUsers();
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "/byId/{id}")
     public User getUserById(@PathVariable Integer id){
         return userService.findById(id);
     }
 
-    @GetMapping(path = "/email/{email}")
+    @GetMapping(path = "/byEmail/{email}")
     public User getUserByEmail(@PathVariable String email){
         return userService.findByEmail(email);
     }
 
-    @PostMapping("/")
+    @PostMapping("/newUser")
     public User createUser(@RequestBody User user){
         return userService.createUser(user);
     }

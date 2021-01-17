@@ -19,7 +19,7 @@ public class Publication {
     private Integer id;
 
     private String image;
-    private LocalDateTime date;
+    private String date;
     @NotNull
     private String description;
     private String city;

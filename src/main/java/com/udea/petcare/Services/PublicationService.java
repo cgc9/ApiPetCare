@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -30,7 +31,10 @@ public class PublicationService {
 
     public Publication createPublication(Publication publication){
         LocalDateTime date= LocalDateTime.now();
-        publication.setDate(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+        String formattedDateTime = date.format(formatter);
+
+        publication.setDate(formattedDateTime);
         return publicationRepository.save(publication);
 
     }

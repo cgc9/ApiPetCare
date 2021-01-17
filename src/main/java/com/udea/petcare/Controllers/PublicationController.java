@@ -16,12 +16,12 @@ public class PublicationController {
     @Autowired
     private PublicationService publicationService;
 
-    @GetMapping(path="/")
+    @GetMapping(path="/allPublications")
     public List<Publication> getAllPublications() {
         return publicationService.findAllPublications();
     }
 
-    @GetMapping(path = "/{type}")
+    @GetMapping(path = "/byType/{type}")
     public List<Publication> getPublicationByType(@PathVariable String type){
         return publicationService.findAllByType(type);
     }
