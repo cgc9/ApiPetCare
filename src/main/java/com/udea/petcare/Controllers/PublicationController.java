@@ -31,12 +31,12 @@ public class PublicationController {
         return publicationService.findAllOderByDate();
     }
 
-    @PostMapping("/")
+    @PostMapping("/createPublication")
     public Publication createPublication(@RequestBody Publication publication){
         return publicationService.createPublication(publication);
     }
 
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "/deletePublication{id}")
 
     public void deletePublication(@PathVariable Integer id){
         publicationService.deletePublication(id);
