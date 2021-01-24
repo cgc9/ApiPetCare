@@ -1,10 +1,9 @@
 package com.udea.petcare.Controllers;
 
 import com.udea.petcare.Models.Publication;
-import com.udea.petcare.Models.User;
 import com.udea.petcare.Services.PublicationService;
-import com.udea.petcare.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +25,12 @@ public class PublicationController {
         return publicationService.findAllByType(type);
     }
 
+    @GetMapping(path = "/byId/{id}")
+    public Publication getPublicationById(@PathVariable Integer id){
+        return publicationService.findById(id);
+    }
+
+
     @GetMapping(path = "/date")
     public List<Publication> getAllByOrder(){
         return publicationService.findAllOderByDate();
@@ -36,10 +41,10 @@ public class PublicationController {
         return publicationService.createPublication(publication);
     }
 
-    @DeleteMapping(path = "/deletePublication{id}")
+    @DeleteMapping(path = "/deletePublication")
 
-    public void deletePublication(@PathVariable Integer id){
-        publicationService.deletePublication(id);
+    public void deletePublication(@RequestBody Publication publication){
+       publicationService.deletePublication(publication);
     }
 
 

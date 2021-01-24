@@ -29,6 +29,10 @@ public class PublicationService {
         return publicationRepository.findByType(type);
     }
 
+    public Publication findById(Integer id){
+        return  publicationRepository.findById(id).orElse(null);
+    }
+
     public Publication createPublication(Publication publication){
         LocalDateTime date= LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
@@ -38,8 +42,8 @@ public class PublicationService {
         return publicationRepository.save(publication);
 
     }
-    public void deletePublication(Integer id){
-        publicationRepository.deleteById(id);
+    public void deletePublication(Publication publication){
+        publicationRepository.delete(publication);
     }
 
 
